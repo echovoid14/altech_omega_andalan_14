@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+  <!-- Root -->
+  <menuitem
+    id="material_management_menu"
+    name="Material Management"
+    sequence="10"/>
+
+  <!-- Sub Menu Material Registration -->
+  <menuitem
+    id="model_name_menu"
+    name="Material Registration"
+    action="material_registration_action"
+    parent="material_management_menu"
+    sequence="20"/>
+
+    
+</odoo>

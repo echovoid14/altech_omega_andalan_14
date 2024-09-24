@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+  <!-- Action Window -->
+  <record id="material_registration_action" model="ir.actions.act_window">
+    <field name="name">Material Registration</field>
+    <field name="res_model">material.registration</field>
+    <field name="view_mode">tree,form</field>
+    <field name="domain">[]</field>
+    <field name="context">{}</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">
+        No material registrations found.
+      </p>
+      <p>
+        Use this form to register materials, their suppliers, and pricing details.
+      </p>
+    </field>
+  </record>
+
+  <!-- Form View -->
+  <record id="material_registration_view_form" model="ir.ui.view">
+    <field name="name">material.registration.view.form</field>
+    <field name="model">material.registration</field>
+    <field name="arch" type="xml">
+      <form string="Material Registration">
+        <sheet>
+          <group>
+            <group>
+              <field name="name" />
+              <field name="code" />
+              <field name="material_type" />
+            </group>
+            <group>
+              <field name="price_unit" />
+              <field name="currency_id" invisible="1"/>
+              <field name="supplier_id" />
+            </group>
+          </group>
+        </sheet>
+        <div class="oe_chatter">
+          <field name="message_ids" widget="mail_thread" />
+          <field name="activity_ids" widget="mail_activity" />
+        </div>
+      </form>
+    </field>
+  </record>
+
+  <!-- Tree View -->
+  <record id="material_registration_view_tree" model="ir.ui.view">
+    <field name="name">material.registration.view.tree</field>
+    <field name="model">material.registration</field>
+    <field name="arch" type="xml">
+      <tree string="Material Registration">
+        <field name="code"/>
+        <field name="name"/>
+        <field name="material_type"/>
+        <field name="price_unit"/>
+        <field name="supplier_id"/>
+      </tree>
+    </field>
+  </record>
+
+  <!-- Search Filter -->
+  <record id="material_registration_view_search" model="ir.ui.view">
+      <field name="name">material.registration.view.search</field>
+      <field name="model">material.registration</field>
+      <field name="arch" type="xml">
+          <search string="Search Material">
+              <field name="name" />
+              <field name="code" />
+              <field name="material_type" />
+              <field name="supplier_id" />
+              <filter name="group_by_material_type" string="Material Type" context="{'group_by': 'material_type'}" />
+              <filter name="group_by_supplier" string="Supplier" context="{'group_by': 'supplier_id'}" />
+          </search>
+      </field>
+  </record>
+
+</odoo>
